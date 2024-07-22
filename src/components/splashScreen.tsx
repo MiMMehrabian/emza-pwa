@@ -4,7 +4,7 @@ function SplashScreen() {
   return (
     <div
       id={'globalLoader'}
-      className='bg-primary-color absolute left-0 top-0 flex h-screen w-screen place-items-center justify-center'
+      className='absolute left-0 top-0 z-[9999] flex h-screen w-screen place-items-center justify-center bg-primary-color'
     >
       <Image src={'/images/emza.png'} width={200} height={200} alt='emza' />
     </div>

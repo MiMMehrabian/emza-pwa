@@ -12,10 +12,12 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@material-tailwind/react": "^2.1.9",
     "@serwist/next": "^9.0.3",
     "clsx": "^2.1.1",
     "lucide-react": "^0.394.0",
     "next": "14.2.3",
+    "preline": "^2.4.0",
     "prettier": "^3.3.2",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.6.3",
