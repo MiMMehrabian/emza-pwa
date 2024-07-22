@@ -28,5 +28,5 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  twitter: X
+  twitter: X,
 }

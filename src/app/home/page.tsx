@@ -1,8 +1,10 @@
-import React from 'react'
+import MainHeader from '@/components/MainHeader'
 
 function page() {
   return (
-    <div>page</div>
+    <div>
+      <MainHeader />
+    </div>
   )
 }
 
