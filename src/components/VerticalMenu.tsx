@@ -14,7 +14,7 @@ function VerticalMenu(props: Props) {
       <div className='flex w-full justify-between overflow-x-hidden'>
         <div
           dir='rtl'
-          className='flex w-full gap-x-5 overflow-scroll [&>div]:flex-shrink-0'
+          className='flex w-full gap-x-5 overflow-x-scroll [&>div]:flex-shrink-0'
         >
           <div className='my-5 flex w-52 flex-col gap-y-2 rounded-2xl bg-white [box-shadow:0px_1px_4px_0px_#00000040]'>
             <div>
