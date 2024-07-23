@@ -14,11 +14,12 @@ export default function Notfound() {
       <Image
         className='mt-32'
         width={250}
+        loading='lazy'
         height={250}
         alt='offline'
         src={'/images/Fast-Internet.svg'}
       />
-      <h2 className='mt-2 text-center font-mono text-2xl font-semibold'>
+      <h2 className='font-mono mt-2 text-center text-2xl font-semibold'>
         Oops! Page Not Found
       </h2>
       <p className='text-sm opacity-50'>

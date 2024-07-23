@@ -1,8 +1,9 @@
 'use client'
 import MainHeader from '@/components/MainHeader'
-import VerticalMenu from '@/components/VerticalMenu'
+import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import { Sheet, SheetRef } from 'react-modal-sheet'
+const VerticalMenu = dynamic(() => import('@/components/VerticalMenu'))
 
 function Page() {
   const [isOpen, setOpen] = useState(false)
@@ -15,12 +16,13 @@ function Page() {
   }, [isOpen])
   return (
     <div>
+      
       <MainHeader />
       <Sheet
         ref={ref}
         isOpen={isOpen}
         onClose={() => snapTo(2)}
-        snapPoints={[700, 400, 20]}
+        snapPoints={[700, 400, 50]}
         initialSnap={1}
         initial
         onCloseEnd={() => setOpen(true)}

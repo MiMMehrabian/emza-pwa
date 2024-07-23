@@ -1,15 +1,14 @@
 'use client'
-import PrimaryBTN from '@/components/PrimaryButton'
-import { Input } from '@material-tailwind/react'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+
+import { Input } from '@material-tailwind/react'
+const PrimaryBTN = dynamic(() => import('@/components/PrimaryButton'))
 
 export default function Home() {
-
   const router = useRouter()
   return (
     <div className='flex flex-col'>
-      {/* <SplashScreen /> */}
       <div dir='rtl' className='p-4'>
         <h4 className='my-3 text-sm font-semibold'>ثبت نام/ورود</h4>
         <span className='text-sm font-normal'>

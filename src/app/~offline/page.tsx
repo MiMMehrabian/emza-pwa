@@ -12,11 +12,12 @@ export default function Offline() {
       <Image
         className='mt-32'
         width={250}
+        loading='lazy'
         height={250}
         alt='offline'
         src={'/images/Loading-Time.svg'}
       />
-      <h2 className='mt-2 text-center font-mono text-2xl font-semibold'>
+      <h2 className='font-mono mt-2 text-center text-2xl font-semibold'>
         Oops! It Looks Like You're Offline
       </h2>
 

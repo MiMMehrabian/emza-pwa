@@ -19,11 +19,13 @@ function VerticalMenu(props: Props) {
           <div className='my-5 flex w-52 flex-col gap-y-2 rounded-2xl bg-white [box-shadow:0px_1px_4px_0px_#00000040]'>
             <div>
               <Image
-                width={100}
-                height={100}
                 src={'/images/baroj.png'}
-                alt=''
+                alt='baroj'
+                width={600}
+                height={400}
                 className='w-full'
+                loading='lazy'
+                sizes='(max-width: 600px) 100vw, 600px'
               />
             </div>
             <div dir='rtl' className='px-5 py-2'>
@@ -36,10 +38,12 @@ function VerticalMenu(props: Props) {
           <div className='my-5 flex w-52 flex-col gap-y-2 rounded-2xl bg-white [box-shadow:0px_1px_4px_0px_#00000040]'>
             <div>
               <Image
-                width={100}
-                height={100}
+                width={600}
+                height={400}
                 src={'/images/baroj.png'}
-                alt=''
+                loading='lazy'
+                alt='baroj'
+                sizes='(max-width: 600px) 100vw, 600px'
                 className='w-full'
               />
             </div>
@@ -51,10 +55,12 @@ function VerticalMenu(props: Props) {
           <div className='my-5 flex w-52 flex-col gap-y-2 rounded-2xl bg-white [box-shadow:0px_1px_4px_0px_#00000040]'>
             <div>
               <Image
-                width={100}
-                height={100}
+                width={600}
+                height={400}
                 src={'/images/baroj.png'}
-                alt=''
+                loading='lazy'
+                sizes='(max-width: 600px) 100vw, 600px'
+                alt='baroj'
                 className='w-full'
               />
             </div>
