@@ -1,24 +1,15 @@
 'use client'
 import PrimaryBTN from '@/components/PrimaryButton'
-import SplashScreen from '@/components/splashScreen'
 import { Input } from '@material-tailwind/react'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function Home() {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const loader = document.getElementById('globalLoader')
-      if (loader) {
-        loader.style.display = 'none'
-      }
-    }
-  }, [])
 
   const router = useRouter()
   return (
     <div className='flex flex-col'>
-      <SplashScreen />
+      {/* <SplashScreen /> */}
       <div dir='rtl' className='p-4'>
         <h4 className='my-3 text-sm font-semibold'>ثبت نام/ورود</h4>
         <span className='text-sm font-normal'>
