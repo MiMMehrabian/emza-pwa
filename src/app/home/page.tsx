@@ -8,14 +8,19 @@ import MainHeader from '@/components/MainHeader'
 const VerticalMenu = dynamic(() => import('@/components/VerticalMenu'))
 
 function Page() {
-  const snapPoints = [
-    window.innerHeight * 0.95, // 90% of the screen height
-    window.innerHeight * 0.55, // 50% of the screen height
-    window.innerHeight * 0.05 // 5% of the screen height
-  ]
+  const [snapPoints, setSnapPoints] = useState([])
   const [isOpen, setOpen] = useState(false)
   const ref = useRef<SheetRef>()
   const snapTo = (i: number) => ref.current?.snapTo(i)
+  useEffect(() => {
+    if (window) {
+      setSnapPoints([
+    window.innerHeight * 0.95, // 90% of the screen height
+    window.innerHeight * 0.55, // 50% of the screen height
+    window.innerHeight * 0.05 // 5% of the screen height
+  ])
+    }
+  }, [)
   useEffect(() => {
     if (!isOpen) {
       setOpen(true)
