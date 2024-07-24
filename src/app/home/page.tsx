@@ -1,8 +1,10 @@
 'use client'
-import MainHeader from '@/components/MainHeader'
 import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
+
 import { Sheet, SheetRef } from 'react-modal-sheet'
+
+import MainHeader from '@/components/MainHeader'
 const VerticalMenu = dynamic(() => import('@/components/VerticalMenu'))
 
 function Page() {
@@ -16,7 +18,6 @@ function Page() {
   }, [isOpen])
   return (
     <div>
-      
       <MainHeader />
       <Sheet
         ref={ref}
