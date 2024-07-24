@@ -30,7 +30,7 @@ function Page() {
         onSnap={snapIndex => !isOpen && setOpen(true)}
       >
         <Sheet.Container>
-          <Sheet.Content>
+          <Sheet.Content className='bg-[#F9F9F9]'>
             <div className='flex place-items-center justify-center'>
               <div className='mt-2 h-2 w-12 rounded bg-[#D9D9D9]'></div>
             </div>

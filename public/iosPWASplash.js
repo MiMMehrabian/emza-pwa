@@ -45,6 +45,6 @@ function iosPWASplash(t, e = 'white') {
 }
 
 iosPWASplash(
-  '/splashscreens/iPhone_15_Pro_Max__iPhone_15_Plus__iPhone_14_Pro_Max_portrait.png',
+  '/splashscreens/4__iPhone_SE__iPod_touch_5th_generation_and_later_landscape.png',
   '#4B8DDE'
 )
