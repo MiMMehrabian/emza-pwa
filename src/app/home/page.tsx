@@ -8,6 +8,11 @@ import MainHeader from '@/components/MainHeader'
 const VerticalMenu = dynamic(() => import('@/components/VerticalMenu'))
 
 function Page() {
+  const snapPoints = [
+    window.innerHeight * 0.95, // 90% of the screen height
+    window.innerHeight * 0.55, // 50% of the screen height
+    window.innerHeight * 0.05 // 5% of the screen height
+  ]
   const [isOpen, setOpen] = useState(false)
   const ref = useRef<SheetRef>()
   const snapTo = (i: number) => ref.current?.snapTo(i)
@@ -23,13 +28,13 @@ function Page() {
         ref={ref}
         isOpen={isOpen}
         onClose={() => snapTo(2)}
-        snapPoints={[700, 400, 50]}
-        initialSnap={1}
+        snapPoints={snapPoints}
+        initialSnap={0}
         initial
         onCloseEnd={() => setOpen(true)}
         onSnap={snapIndex => !isOpen && setOpen(true)}
       >
-        <Sheet.Container>
+        <Sheet.Container className='!rounded-t-2xl'>
           <Sheet.Content className='bg-[#F9F9F9]'>
             <div className='flex place-items-center justify-center'>
               <div className='mt-2 h-2 w-12 rounded bg-[#D9D9D9]'></div>
@@ -49,6 +54,7 @@ function Page() {
           </Sheet.Content>
         </Sheet.Container>
       </Sheet>
+      {/* <div className='fixed bottom-0 z-[99999999]'>asdasd</div> */}
     </div>
   )
 }
