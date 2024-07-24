@@ -8,10 +8,6 @@ const withSerwist = withSerwistInit({
   reloadOnOnline: true
 })
 
-const nextConfig = {
-  images: {
-    unoptimized: true
-  }
-}
+const nextConfig = {}
 
 export default withSerwist(nextConfig)
