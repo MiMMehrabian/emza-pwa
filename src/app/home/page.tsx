@@ -8,7 +8,7 @@ import MainHeader from '@/components/MainHeader'
 const VerticalMenu = dynamic(() => import('@/components/VerticalMenu'))
 
 function Page() {
-  const [snapPoints, setSnapPoints] = useState([])
+  const [snapPoints, setSnapPoints] = useState<Array<any>>([])
   const [isOpen, setOpen] = useState(false)
   const ref = useRef<SheetRef>()
   const snapTo = (i: number) => ref.current?.snapTo(i)
