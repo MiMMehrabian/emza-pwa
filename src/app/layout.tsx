@@ -1,12 +1,13 @@
 'use client'
-import { useEffect } from 'react'
-import Script from 'next/script'
 import localFont from 'next/font/local'
+import Script from 'next/script'
+import { useEffect } from 'react'
 
 import PrelineScript from '@/components/PrelineScript'
-
-const yekan = localFont({ src: '../../public/fonts/IRANYekanX-Regular.ttf' })
+import { Toaster } from 'react-hot-toast'
 import './globals.css'
+
+const yekan = localFont({ src: '../../public/fonts/IRANYekanX-Medium.ttf' })
 
 export default function RootLayout({
   children
@@ -40,8 +41,9 @@ export default function RootLayout({
 
       <body className={yekan.className}>
         <div className='mx-auto flex min-h-screen flex-col'>
-          <main className='flex grow flex-col'>{children}</main>
+          <main className='flex flex-col'>{children}</main>
         </div>
+        <Toaster />
       </body>
       <PrelineScript />
       <Script src='/iosPWASplash.js'></Script>
