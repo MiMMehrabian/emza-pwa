@@ -43,9 +43,9 @@ function Page() {
         <WelcomeToast onClose={() => setShowToast(false)} />
       )}
       <div className='flex flex-col'>
-        <button onClick={SpeechRecognition.startListening}>Start</button>
-        <button onClick={SpeechRecognition.stopListening}>Stop</button>
-        <button onClick={resetTranscript}>Reset</button>
+        <button onClick={e => SpeechRecognition.startListening()}>Start</button>
+        <button onClick={e => SpeechRecognition.stopListening()}>Stop</button>
+        <button onClick={e => resetTranscript()}>Reset</button>
         <p>P:{transcript}</p>
       </div>
       <MainHeader />
