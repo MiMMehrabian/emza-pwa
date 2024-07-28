@@ -43,10 +43,9 @@ function Page() {
         <WelcomeToast onClose={() => setShowToast(false)} />
       )}
       <div className='flex flex-col'>
-        <button onClick={e => SpeechRecognition.startListening({language:"fa-IR"})}>Start</button>
-        <button onClick={e => SpeechRecognition.stopListening()}>Stop</button>
-        <button onClick={e => resetTranscript()}>Reset</button>
-        <p>P:{transcript}</p>
+        {transcript && (
+          <p>متن ضبط شده : {transcript}</p>
+        )}
       </div>
       <MainHeader />
       <Sheet
@@ -86,7 +85,7 @@ function Page() {
         className='slide-top fixed -bottom-2 z-[99999999] flex h-10 w-screen gap-x-2 overflow-x-scroll bg-white/75 px-2 duration-100 ease-linear'
       >
         <div className='flex flex-shrink-0 place-items-center justify-center'>
-          <button className='box-shadow rounded-full bg-white p-2'>
+          <button onClick={e => SpeechRecognition.startListening({ language: "fa-IR" })} className='box-shadow rounded-full bg-white p-2'>
             <RecordIcon />
           </button>
         </div>
