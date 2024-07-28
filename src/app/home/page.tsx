@@ -1,13 +1,13 @@
 'use client'
-import dynamic from 'next/dynamic'
+import 'regenerator-runtime/runtime'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { IoClose } from 'react-icons/io5'
 import { Sheet, SheetRef } from 'react-modal-sheet'
-
 import MainHeader from '@/components/MainHeader'
-import Image from 'next/image'
-const VerticalMenu = dynamic(() => import('@/components/VerticalMenu'))
-
+import WelcomeToast from '@/components/WelcomeToast'
+import MainMenu from '@/components/menus/MainMenu'
+import { RecordIcon } from '@/components/svgs/svgs'
+import QuickAccessItems from '@/components/menus/QuickAccessItems'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 function Page() {
   const [snapPoints, setSnapPoints] = useState<Array<any>>([])
   const [margin, setMargin] = useState(false)
@@ -32,45 +32,22 @@ function Page() {
       setOpen(true)
     }
   }, [isOpen])
+  const { transcript, resetTranscript } = useSpeechRecognition()
+
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return null
+  }
   return (
     <div>
       {showToast && (
-        <div className='animate-leave absolute top-20 w-full'>
-          <div className='pointer-events-auto relative mx-auto flex w-11/12 max-w-md flex-row-reverse rounded-lg bg-[linear-gradient(82.4deg,_#68ACFF_-8.04%,_#184781_142.37%)] shadow-lg ring-1 ring-black ring-opacity-5'>
-            <div dir='rtl' className='w-3/4 flex-1 p-4'>
-              <div className='flex items-start'>
-                <div className='pt-0.5'></div>
-                <div className='ml-3 w-full'>
-                  <p className='text-xs font-bold text-white'>
-                    به امضا خوش آمدی
-                  </p>
-                  <p className='mt-1 text-xs font-normal text-white'>
-                    شما در حال استفاده از نسخه آزمایشی هستی.
-                  </p>
-                  <p className='mt-1 text-[10px] font-semibold text-white'>
-                    اطلاعات بیشتر
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className='flex w-1/4 place-items-center justify-center'>
-              <Image
-                width={40}
-                height={40}
-                className='h-10 w-10'
-                src={'/images/bell.png'}
-                alt='bell'
-              />
-            </div>
-            <button
-              onClick={e => setShowToast(false)}
-              className='absolute left-1 top-1 flex'
-            >
-              <IoClose color='white' size={20} />
-            </button>
-          </div>
-        </div>
+        <WelcomeToast onClose={() => setShowToast(false)} />
       )}
+      <div className='flex flex-col'>
+        <button onClick={SpeechRecognition.startListening}>Start</button>
+        <button onClick={SpeechRecognition.stopListening}>Stop</button>
+        <button onClick={resetTranscript}>Reset</button>
+        <p>P:{transcript}</p>
+      </div>
       <MainHeader />
       <Sheet
         ref={ref}
@@ -97,18 +74,7 @@ function Page() {
             <div className={`overflow-y-auto`}>
               {!margin && (
                 <>
-                  <VerticalMenu
-                    menuTitle={'ارزان'}
-                    menuDescription={
-                      'پایین ترین قیمت ها در دسته بندی های مختلف'
-                    }
-                    items={[]}
-                  />
-                  <VerticalMenu
-                    menuTitle={'ایرانی سنتی'}
-                    menuDescription={'کباب, خورشت, خوراک, دریایی, صبحانه'}
-                    items={[]}
-                  />
+                  <MainMenu />
                 </>
               )}
             </div>
@@ -121,63 +87,16 @@ function Page() {
       >
         <div className='flex flex-shrink-0 place-items-center justify-center'>
           <button className='box-shadow rounded-full bg-white p-2'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='24'
-              height='24'
-              viewBox='0 0 24 24'
-              fill='none'
-            >
-              <path
-                d='M12 19C15.31 19 18 16.31 18 13V8C18 4.69 15.31 2 12 2C8.69 2 6 4.69 6 8V13C6 16.31 8.69 19 12 19Z'
-                stroke='black'
-                strokeWidth='1.5'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-              <path
-                d='M3 11V13C3 17.97 7.03 22 12 22C16.97 22 21 17.97 21 13V11'
-                stroke='black'
-                strokeWidth='1.5'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-              <path
-                d='M9.10999 7.47999C10.89 6.82999 12.83 6.82999 14.61 7.47999'
-                stroke='black'
-                strokeWidth='1.5'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-              <path
-                d='M10.03 10.48C11.23 10.15 12.5 10.15 13.7 10.48'
-                stroke='black'
-                strokeWidth='1.5'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
+            <RecordIcon />
           </button>
         </div>
+
         <div className='flex gap-x-2 overflow-x-scroll'>
-          <div className='flex-shrink-0 rounded-lg bg-white px-2 py-3 text-xs font-semibold text-[#3E3E3E]'>
-            سفارش غذا از رستوران یملی
-          </div>
-          <div className='flex-shrink-0 rounded-lg bg-white px-2 py-3 text-xs font-semibold text-[#3E3E3E]'>
-            دو پرس پاچینی با نوشابه و سس ...
-          </div>
-          <div className='flex-shrink-0 rounded-lg bg-white px-2 py-3 text-xs font-semibold text-[#3E3E3E]'>
-            دو پرس پاچینی با نوشابه و سس ...
-          </div>
-          <div className='flex-shrink-0 rounded-lg bg-white px-2 py-3 text-xs font-semibold text-[#3E3E3E]'>
-            دو پرس پاچینی با نوشابه و سس ...
-          </div>
-          <div className='flex-shrink-0 rounded-lg bg-white px-2 py-3 text-xs font-semibold text-[#3E3E3E]'>
-            دو پرس پاچینی با نوشابه و سس ...
-          </div>
-          <div className='flex-shrink-0 rounded-lg bg-white px-2 py-3 text-xs font-semibold text-[#3E3E3E]'>
-            دو پرس پاچینی با نوشابه و سس ...
-          </div>
+          <QuickAccessItems text={'سفارش غذا از رستوران یملی'} />
+          <QuickAccessItems text={'دو پرس پاچینی با نوشابه و سس ...'} />
+          <QuickAccessItems text={'دو پرس پاچینی با نوشابه و سس ...'} />
+          <QuickAccessItems text={'دو پرس پاچینی با نوشابه و سس ...'} />
+          <QuickAccessItems text={'دو پرس پاچینی با نوشابه و سس ...'} />
         </div>
       </div>
     </div>

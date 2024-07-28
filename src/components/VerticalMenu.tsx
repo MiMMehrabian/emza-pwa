@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import ShopItem from './menus/ShopItem'
 type Props = {
   menuTitle: string
   menuDescription: string
@@ -16,44 +17,9 @@ function VerticalMenu(props: Props) {
           dir='rtl'
           className='flex w-full gap-x-5 overflow-x-scroll [&>div]:flex-shrink-0'
         >
-          <div className='my-2 flex w-60 h-44 flex-col gap-y-2 rounded-3xl bg-white [box-shadow:0px_1px_4px_0px_#00000040]'>
-            <div>
-              <Image
-                src={'/images/baroj.png'}
-                alt='baroj'
-                width={600}
-                height={400}
-                className='w-full h-28 object-cover rounded-t-3xl'
-                loading='lazy'
-                sizes='(max-width: 600px) 100vw, 600px'
-              />
-            </div>
-            <div dir='rtl' className='px-5'>
-              <h4 className='font-semibold'>باروژ</h4>
-              <span className='text-right text-xs'>
-                سوخاری, پیتزا, پاستا, ساندویچ
-              </span>
-            </div>
-          </div>
-          <div className='my-2 flex w-60 h-44 flex-col gap-y-2 rounded-3xl bg-white [box-shadow:0px_1px_4px_0px_#00000040]'>
-            <div>
-              <Image
-                src={'/images/baroj.png'}
-                alt='baroj'
-                width={600}
-                height={400}
-                className='w-full h-28 object-cover rounded-t-3xl'
-                loading='lazy'
-                sizes='(max-width: 600px) 100vw, 600px'
-              />
-            </div>
-            <div dir='rtl' className='px-5'>
-              <h4 className='font-semibold'>باروژ</h4>
-              <span className='text-right text-xs'>
-                سوخاری, پیتزا, پاستا, ساندویچ
-              </span>
-            </div>
-          </div>
+          <ShopItem src={'/images/baroj.png'} title={'باروژ'} description={'سوخاری, پیتزا, پاستا, ساندویچ'} id={0} />
+          <ShopItem src={'/images/baroj.png'} title={'باروژ'} description={'سوخاری, پیتزا, پاستا, ساندویچ'} id={1} />
+
         </div>
       </div>
     </section>
